@@ -41,13 +41,8 @@ jobs:
         docker build -t "$PROJECT_ID/$IMAGE" -f ./frontend/Dockerfile .
          
     - name: Initialize Google Cloud SDK
-      uses: zxyle/publish-gae-action@master
-      with:
-        service_account_email: $GCP_SA_EMAIL
-        service_account_key: $GCP_SA_KEY
-        project_id: $PROJECT_ID
-   
-
+      uses: mathrix-education/setup-gcloud@master
+  
     - name: Publish app to Google App Engine
       run: |
        # This client-secret.json is converted by GCP_SA_KEY.
