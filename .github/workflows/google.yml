@@ -39,7 +39,7 @@ jobs:
       with:
         version: '270.0.0'
         service_account_email:  $GCP_SA_EMAIL
-        service_account_key: ${{GCP_SA_KEY}}
+        service_account_key: $GCP_SA_KEY
 
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
@@ -50,21 +50,21 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |        
-        docker build -t "${{PROJECT_ID}}/${{IMAGE}}"
+        docker build -t "$PROJECT_ID/$IMAGE"
          
     - name: Initialize Google Cloud SDK
       uses: zxyle/publish-gae-action@master
       with:
-        service_account_email: ${{GCP_SA_EMAIL}}
-        service_account_key: ${{GCP_SA_KEY}}
-        project_id: ${{PROJECT_ID }}
+        service_account_email: $GCP_SA_EMAIL
+        service_account_key: $GCP_SA_KEY
+        project_id: $PROJECT_ID
    
 
     - name: Publish app to Google App Engine
       run: |
        # This client-secret.json is converted by GCP_SA_KEY.
-       gcloud auth activate-service-account ${{GCP_SA_EMAIL}} --key-file=client-secret.json
-       gcloud config set project ${{ PROJECT_ID }}
+       gcloud auth activate-service-account $GCP_SA_EMAIL --key-file=client-secret.json
+       gcloud config set project $PROJECT_ID 
        gcloud -q app deploy app.yaml --promote
     
        # Suppose you need a cron task.
