@@ -22,7 +22,7 @@ env:
   GCP_SA_KEY:  ${{ secrets.GCP_SA_KEY }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: us-west1-a
-  IMAGE: lumb
+  IMAGE: $PROJECT_ID/lumb
   DEPLOYMENT_NAME: gke-test
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |        
-        docker build -t "$PROJECT_ID/$IMAGE" -f ./frontend/Dockerfile .
+        docker build -t $PROJECT_ID/$IMAGE -f ./frontend/Dockerfile .
          
     - name: Initialize Google Cloud SDK
       uses: mathrix-education/setup-gcloud@master
@@ -48,7 +48,5 @@ jobs:
        # This client-secret.json is converted by GCP_SA_KEY.
        gcloud auth activate-service-account $GCP_SA_EMAIL --key-file=client-secret.json
        gcloud config set project $PROJECT_ID 
-       gcloud -q app deploy app.yaml --promote
+       gcloud -q app deploy ./frontend/app.yaml --promote
     
-       # Suppose you need a cron task.
-       gcloud -q app deploy cron.yaml
