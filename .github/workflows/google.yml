@@ -38,7 +38,7 @@ jobs:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         version: '270.0.0'
-        service_account_email:  ${{GCP_SA_EMAIL}}
+        service_account_email:  $GCP_SA_EMAIL
         service_account_key: ${{GCP_SA_KEY}}
 
     # Configure docker to use the gcloud command-line tool as a credential helper
