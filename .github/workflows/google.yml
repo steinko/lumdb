@@ -41,7 +41,7 @@ jobs:
         docker build -t "$PROJECT_ID/$IMAGE" -f ./frontend/Dockerfile .
          
     - name: Initialize Google Cloud SDK
-    - uses: mathrix-education/setup-gcloud@master
+      uses: mathrix-education/setup-gcloud@master
   
     - name: Publish app to Google App Engine
       run: |
