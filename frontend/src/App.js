@@ -1,9 +1,12 @@
-import React from 'react';
+import React , {useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Welcome from './Welcome'
 
+
 function App() {
+    
+     const [isToggled, setIsToggled] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
@@ -20,9 +23,13 @@ function App() {
           Learn React
         </a>
       </header>
-      <Welcome />>
+      <button id = 'toggleButton' onClick = {() =>setIsToggled(!isToggled)} >Toggle</button>
+      <Welcome />
+      {isToggled && <h1 id = "tollgleText">This shold show and hide</h1>}
     </div>
   );
 }
+
+
 
 export default App;
