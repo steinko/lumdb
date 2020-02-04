@@ -23,3 +23,9 @@ it ("should not find element", async () => {
 	expect( await driver.findElements(By.id("toggleText"))).not.toBeNull()
 
 })
+
+xit ("should  find Star Wars amd Spider Man", async () => {
+	const expected = ['Star Wars', 'Spider Man'];
+	expect( await driver.findElements(By.className("Movie"))).toEqual(expect.arrayContaining(expected))
+
+})

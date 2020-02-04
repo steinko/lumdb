@@ -12,3 +12,9 @@ it ('should not  contain text show and hide', () => {
      cy.get('body').contains('Toggle').click()
      cy.contains('show and hide')
  })
+
+
+ it ('should  contain texts Spider Man amd Star Wars', () => {
+     cy.contains('Star Wars')
+     cy.contains('Spider Man')
+ })
