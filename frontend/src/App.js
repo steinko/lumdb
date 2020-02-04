@@ -1,8 +1,8 @@
 import React , {useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Welcome from './Welcome'
-import Movie from './Movie'
+import Welcome from './components/Welcome'
+import Movie from './components/Movie'
 
 const movies = [ 
   { id: 1,
