@@ -18,3 +18,8 @@ it ('should not  contain text show and hide', () => {
      cy.contains('Star Wars')
      cy.contains('Spider Man')
  })
+
+  it ('should  contain decription decription not available  amd Star Wars', () => {
+     cy.contains('Decription not available')
+     cy.contains('Space Movie')
+ })
