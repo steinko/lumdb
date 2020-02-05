@@ -10,7 +10,9 @@ class Movie extends Component {
 	 }
 	static defaultProps = {
 		desc: 'Description not available'
-      }
+	  }
+
+	
 	render () { 
 		return ( 
 		         <div>

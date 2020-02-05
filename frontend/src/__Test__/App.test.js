@@ -2,6 +2,20 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App'
 
+
+const data = 
+	   { results: 
+		  [{ 
+			"id": 419704,
+			"title": "Ad Astra"
+		   }]
+		 }
+
+beforeEach(() => {
+    fetch.resetMocks()
+    fetch.mockResponseOnce(JSON.stringify( data))
+  })
+
 test('renders learn react link', () => {
   const { getByText } = render(<App />)
   const linkElement = getByText(/learn react/i)

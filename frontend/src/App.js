@@ -1,26 +1,24 @@
-import React , {useState } from 'react';
+import React , {useState,useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Welcome from './components/Welcome'
 import Movie from './components/Movie'
-
-const movies = [ 
-  { id: 1,
-    title: 'Star Wars'
-  },
-  { id: 2,
-    title: 'Spider Man'
-  },
-  { id: 3,
-    title: 'Scindlers List'
-  },
-
-]
+import {getMovies} from './services/MovieServices'
 
 
 function App() {
     
      const [isToggled, setIsToggled] = useState(false)
+     const [movies, setMovies] = useState([])
+     
+	   useEffect( () => { 
+         async function fetchMovies() {
+		       const movies = await getMovies()
+           setMovies( movies.results)
+        }
+        fetchMovies()
+     },[] )
+     
   return (
     <div className="App">
       <header className="App-header">
