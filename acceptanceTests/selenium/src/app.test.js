@@ -8,7 +8,7 @@ beforeAll( async () =>  {
 	await driver.get(getHostName())
  })
 
-it('should input a todo', async () => {
+it('should diplay welcome', async () => {
 	 const welcome = await driver.findElement(By.id('welcomeTitle'))
 	 expect(await welcome.getText()).toContain('Welcome')
 })
@@ -21,6 +21,13 @@ it ("should not find element", async () => {
 it ("should not find element", async () => {
 	await driver.findElement(By.id("toggleButton")).click()
 	expect( await driver.findElements(By.id("toggleText"))).not.toBeNull()
+
+})
+
+it ("should display test", async () => {
+	await driver.get(getHostName() + '/test')
+	const element = await driver.findElement(By.tagName("h1"))
+	expect( await element.getText()).toBe('Test')
 
 })
 

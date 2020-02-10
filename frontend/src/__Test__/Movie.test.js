@@ -13,8 +13,8 @@ it ('should exist', () => {
 })
 
 it ('should display Cool Movie', () => { 
-	const  {queryByText} = render(<Movie movie = {movie} />)
-	expect(queryByText('Cool Movie')).not.toBeNull()
+	const  {queryByRole} = render(<Movie movie = {movie} />)
+	expect(queryByRole('img').alt).toBe('Cool Movie')
 })
 
 

@@ -4,10 +4,12 @@ import './App.css';
 import Welcome from './components/Welcome'
 import Movie from './components/Movie'
 import {getMovies} from './services/MovieServices'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 
 
 function App() {
-    
+     const POSTER_PATH = 'http://image.tmdb.org/t/p/w154'
      const [isToggled, setIsToggled] = useState(false)
      const [movies, setMovies] = useState([])
      
@@ -20,29 +22,23 @@ function App() {
      },[] )
      
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <button id = 'toggleButton' onClick = {() =>setIsToggled(!isToggled)} >Toggle</button>
-      <Welcome />
-      {isToggled && <h1 id = "tollgleText">This shold show and hide</h1>}
-      {movies.map(movie =>  <Movie key = {movie.id} movie = {movie} />)}
-    </div>
+    <Router>
+       <div className="App">
+          <header className="App-header">
+             <img src={logo} className="App-logo" alt="logo" />
+          </header>
+          <Route path= '/test' component = {Test} /> 
+          <button id = 'toggleButton' onClick = {() =>setIsToggled(!isToggled)} >Toggle</button>
+          <Welcome />
+          {isToggled && <h1 id = "tollgleText">This shold show and hide</h1>}
+          {movies.map(movie =>  <Movie key = {movie.id} movie = {movie} />)}
+       </div>
+    </Router>
   );
 }
 
-
-
 export default App;
+
+const Test = () => (
+      <h1>TEST</h1>
+)
