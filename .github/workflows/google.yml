@@ -46,8 +46,7 @@ jobs:
     - name: Publish app to Google App Engine
       run: |
        # This client-secret.json is converted by GCP_SA_KEY.
-       gcloud iam service-accounts keys create --iam-account $GCP_SA_EMAIL client-secret.json
-       gcloud auth activate-service-account $GCP_SA_EMAIL --key-file=client-secret.json
-       gcloud config set project $PROJECT_ID 
+       gcloud auth activate-service-account ${{ secrets.GCP_SA_EMAIL }} --key-file=client-secret.json
+       gcloud config set project ${{ secrets.PROJECT_ID }}
        gcloud -q app deploy ./frontend/app.yaml --promote
     
